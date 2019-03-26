@@ -1,5 +1,12 @@
 <?php
 
+require_once __DIR__ . '/../../../vendor/autoload.php';
+
+use LiveVoting\Js\xlvoJs;
+use LiveVoting\QuestionTypes\xlvoQuestionTypes;
+use LiveVoting\QuestionTypes\xlvoQuestionTypesGUI;
+use srag\CustomInputGUIs\LiveVoting\GlyphGUI\GlyphGUI;
+
 /**
  * Class xlvoSingleVoteGUI
  *
@@ -11,20 +18,23 @@ class xlvoSingleVoteGUI extends xlvoQuestionTypesGUI {
 
 	const BUTTON_TOGGLE_PERCENTAGE = 'toggle_percentage';
 
+
 	/**
-	 * @description add JS to the HEAD
+	 * @param bool $current
 	 */
-	public function initJS() {
-		// TODO: Implement initJS() method.
+	public function initJS($current = false) {
+		xlvoJs::getInstance()->api($this)->name(xlvoQuestionTypes::SINGLE_VOTE)->category('QuestionTypes')
+			->addLibToHeader('jquery.ui.touch-punch.min.js')->init();
 	}
 
 
 	/**
-	 * @description Vote
+	 *
 	 */
 	protected function submit() {
 		$this->manager->vote($_GET['option_id']);
 	}
+
 
 	/**
 	 * @return array
@@ -34,12 +44,12 @@ class xlvoSingleVoteGUI extends xlvoQuestionTypesGUI {
 			return array();
 		}
 		$states = $this->getButtonsStates();
-		$t = \ilLinkButton::getInstance();
+		$t = ilLinkButton::getInstance();
 		$t->setId(self::BUTTON_TOGGLE_PERCENTAGE);
 		if ($states[self::BUTTON_TOGGLE_PERCENTAGE]) {
-			$t->setCaption('%', false);
+			$t->setCaption(' %', false);
 		} else {
-			$t->setCaption(xlvoGlyphGUI::get('user'), false);
+			$t->setCaption(GlyphGUI::get('user'), false);
 		}
 
 		return array( $t );
@@ -55,20 +65,19 @@ class xlvoSingleVoteGUI extends xlvoQuestionTypesGUI {
 		$this->saveButtonState($button_id, !$states[$button_id]);
 	}
 
-	
 
 	/**
 	 * @return string
 	 */
 	public function getMobileHTML() {
-		$tpl = new \ilTemplate('./Customizing/global/plugins/Services/Repository/RepositoryObject/LiveVoting/templates/default/QuestionTypes/SingleVote/tpl.single_vote.html', false, true);
+		$tpl = self::plugin()->template('default/QuestionTypes/SingleVote/tpl.single_vote.html', false);
 		$answer_count = 64;
 		foreach ($this->manager->getVoting()->getVotingOptions() as $xlvoOption) {
 			$answer_count ++;
-			$this->ctrl->setParameter($this, 'option_id', $xlvoOption->getId());
+			self::dic()->ctrl()->setParameter($this, 'option_id', $xlvoOption->getId());
 			$tpl->setCurrentBlock('option');
 			$tpl->setVariable('TITLE', $xlvoOption->getTextForPresentation());
-			$tpl->setVariable('LINK', $this->ctrl->getLinkTarget($this, self::CMD_SUBMIT));
+			$tpl->setVariable('LINK', self::dic()->ctrl()->getLinkTarget($this, self::CMD_SUBMIT));
 			$tpl->setVariable('OPTION_LETTER', chr($answer_count));
 			if ($this->manager->hasUserVotedForOption($xlvoOption)) {
 				$tpl->setVariable('BUTTON_STATE', 'btn-primary');
@@ -80,6 +89,6 @@ class xlvoSingleVoteGUI extends xlvoQuestionTypesGUI {
 			$tpl->parseCurrentBlock();
 		}
 
-		return $tpl->get();
+		return $tpl->get() . xlvoJs::getInstance()->name(xlvoQuestionTypes::SINGLE_VOTE)->category('QuestionTypes')->getRunCode();
 	}
 }

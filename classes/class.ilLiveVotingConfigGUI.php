@@ -1,7 +1,9 @@
 <?php
 
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once('./Services/Component/classes/class.ilPluginConfigGUI.php');
+
+use LiveVoting\Utils\LiveVotingTrait;
+use srag\DIC\LiveVoting\DICTrait;
 
 /**
  * ilLiveVotingConfigGUI
@@ -10,39 +12,48 @@ require_once('./Services/Component/classes/class.ilPluginConfigGUI.php');
  *
  * @ilCtrl_IsCalledBy  ilLiveVotingConfigGUI: ilObjComponentSettingsGUIs
  */
-class ilLiveVotingConfigGUI extends \ilPluginConfigGUI {
+class ilLiveVotingConfigGUI extends ilPluginConfigGUI {
+
+	use DICTrait;
+	use LiveVotingTrait;
+	const PLUGIN_CLASS_NAME = ilLiveVotingPlugin::class;
+
+
+	public function __construct() {
+
+	}
+
 
 	public function executeCommand() {
-		global $ilCtrl, $ilTabs, $lng, $tpl;
-		/**
-		 * @var $ilCtrl \ilCtrl
-		 */
-		$ilCtrl->setParameterByClass("ilobjcomponentsettingsgui", "ctype", $_GET["ctype"]);
-		$ilCtrl->setParameterByClass("ilobjcomponentsettingsgui", "cname", $_GET["cname"]);
-		$ilCtrl->setParameterByClass("ilobjcomponentsettingsgui", "slot_id", $_GET["slot_id"]);
-		$ilCtrl->setParameterByClass("ilobjcomponentsettingsgui", "plugin_id", $_GET["plugin_id"]);
-		$ilCtrl->setParameterByClass("ilobjcomponentsettingsgui", "pname", $_GET["pname"]);
+		// TODO: Refactoring
+		self::dic()->ctrl()->setParameterByClass(ilObjComponentSettingsGUI::class, "ctype", $_GET["ctype"]);
+		self::dic()->ctrl()->setParameterByClass(ilObjComponentSettingsGUI::class, "cname", $_GET["cname"]);
+		self::dic()->ctrl()->setParameterByClass(ilObjComponentSettingsGUI::class, "slot_id", $_GET["slot_id"]);
+		self::dic()->ctrl()->setParameterByClass(ilObjComponentSettingsGUI::class, "plugin_id", $_GET["plugin_id"]);
+		self::dic()->ctrl()->setParameterByClass(ilObjComponentSettingsGUI::class, "pname", $_GET["pname"]);
 
-		$tpl->setTitle($lng->txt("cmps_plugin") . ": " . $_GET["pname"]);
-		$tpl->setDescription("");
+		self::dic()->mainTemplate()->setTitle(self::dic()->language()->txt("cmps_plugin") . ": " . $_GET["pname"]);
+		self::dic()->mainTemplate()->setDescription("");
 
-		$ilTabs->clearTargets();
+		self::dic()->tabs()->clearTargets();
 
 		if ($_GET["plugin_id"]) {
-			$ilTabs->setBackTarget($lng->txt("cmps_plugin"), $ilCtrl->getLinkTargetByClass("ilobjcomponentsettingsgui", "showPlugin"));
+			self::dic()->tabs()->setBackTarget(self::dic()->language()->txt("cmps_plugin"), self::dic()->ctrl()
+				->getLinkTargetByClass(ilObjComponentSettingsGUI::class, "showPlugin"));
 		} else {
-			$ilTabs->setBackTarget($lng->txt("cmps_plugins"), $ilCtrl->getLinkTargetByClass("ilobjcomponentsettingsgui", "listPlugins"));
+			self::dic()->tabs()->setBackTarget(self::dic()->language()->txt("cmps_plugins"), self::dic()->ctrl()
+				->getLinkTargetByClass(ilObjComponentSettingsGUI::class, "listPlugins"));
 		}
 
-		$nextClass = $ilCtrl->getNextClass();
+		$nextClass = self::dic()->ctrl()->getNextClass();
 
 		if ($nextClass) {
 			$a_gui_object = new xlvoMainGUI();
-			$ilCtrl->forwardCommand($a_gui_object);
+			self::dic()->ctrl()->forwardCommand($a_gui_object);
 		} else {
-			$ilCtrl->redirectByClass(array(
-				'xlvoMainGUI',
-				'xlvoConfGUI'
+			self::dic()->ctrl()->redirectByClass(array(
+				xlvoMainGUI::class,
+				xlvoConfGUI::class
 			));
 		}
 	}

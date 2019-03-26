@@ -2,7 +2,7 @@ cat_create_xlobj_results_behaviour#:#Show Results
 cat_create_xlvo#:#Create LiveVoting
 common_actions#:#Actions
 common_all#:#All
-common_all2#:#MISSING
+common_all2#:#MISSING common_all2
 common_answer#:#Answer
 common_back#:#Back
 common_cancel#:#Cancel
@@ -21,7 +21,9 @@ common_round#:#Round
 common_show_history#:#History
 common_time#:#Timestamp
 common_user#:#User
-config_allow_shortlink#:#Activate Short URL
+common_option_no_longer_available#:#[Option no longer available]
+common_ok#:#OK
+config_allow_shortlink#:#Activate Short URL for Voter
 config_allow_shortlink_info#:#Use a Short URL like /vote by adding the following RewriteRule to your .htaccess:
 config_allow_shortlink_link#:#Short URL
 config_allow_shortlink_link_info#:#Full Short URL of your Installation , e.g. https://ilias.domain.com/vote
@@ -32,6 +34,18 @@ config_msg_success#:#Saved
 config_request_frequency#:#Client update frequency
 config_request_frequency_info#:#The client side live voting data update frequency measured in seconds. The lower the number the faster the clients react to changes by the tutor but the load on the server increases. We recommend 2 - 5 seconds.
 config_update#:#Update
+config_result_api#:#Activate Results-API
+config_result_api_info#:#Results of a Voting can be accessed as JSON via Customizing/global/plugins/Services/Repository/RepositoryObject/LiveVoting/api.php?xlvo_pin=XXXX?token=XXXXX
+config_api_token#:#API-Token
+config_api_type#:#Type
+config_regenerate_token#:#Regenerate Token
+config_open_result_api#:#Open API-Link (with latest Voting)
+config_use_global_cache#:#Activate caching
+config_use_global_cache_info#:#Enables the LiveVoting plugin to use the global caching mechanism, which is provided by ILIAS. The underlying cache must be synchronised within a multi note setup, otherwise the plugin produces unpredictable results.
+config_presenter_link#:#Presenter link
+config_presenter_link_non_anonym#:#Only available with Setting "Vote without Login"
+config_ppt_export#:#PowerPoint-Export
+config_ppt_export_info#:#Activate PowerPoint-Export: This features needs the PowerPoint-WebView-Plugin installed and will only work if you ILIAS runs on HTTPS.
 correct_order#:#Correct Order
 crs_create_xlvo#:#Create LiveVoting
 fikd_create_xlvo#:#Create LiveVoting
@@ -40,8 +54,6 @@ incorrect_order#:#Incorrect Order
 msg_success_voting_created#:#Voting has been created
 msg_success_voting_updated#:#Voting has been udpated
 new_round#:#New Round
-objs_xlvo#:#LiveVotings
-objs_xlvo_duplicate#:#Clone existing LiveVoting
 obj_anonymous#:#Vote without Login
 obj_crs#:#Course
 obj_description#:#Description
@@ -78,6 +90,9 @@ obj_terminable_select_start_time#:#Start
 obj_title#:#Title
 obj_xlvo#:#LiveVoting
 obj_xlvo_duplicate#:#Clone existing LiveVoting
+obj_#:#MISSING obj_
+objs_xlvo#:#LiveVotings
+objs_xlvo_duplicate#:#Clone existing LiveVoting
 player_close_modal#:#Close
 player_freeze#:#Pause
 player_hide_results#:#Hide Results
@@ -93,9 +108,9 @@ player_start_voting#:#Start LiveVoting
 player_start_voting_and_unfreeze#:#Start LiveVoting and start voting directly
 player_terminate#:#Terminate
 player_unfreeze#:#Vote
-player_voters_online#:#Online
 player_voting_countdown#:#Countdown
 player_voting_list#:#Questions
+player_voters_description#:#%s voters
 qtype_1_colors#:#Different Colors
 qtype_1_info_latex#:#LaTeX can be surrounded with [tex] ... [/tex]
 qtype_1_multi_selection#:#Multiple Selection
@@ -104,18 +119,18 @@ qtype_1_options#:#Options
 qtype_1_option_text#:#Option-Text
 qtype_1_total_voters#:#Total Voters
 qtype_1_total_votes#:#Total Votes
-qtype_1_unvote#:#Unvote
-qtype_1_vote#:#Vote
+qtype_1_unvote#:#Discard
+qtype_1_vote#:#Send
 qtype_2_answers#:#Inputs
-qtype_2_clear#:#Clear
-qtype_2_delete_all#:#Delete All
+qtype_2_clear#:#Discard
+qtype_2_delete_all#:#Discard all
 qtype_2_input#:#Input
 qtype_2_multi_free_input#:#Multiple Inputs
 qtype_2_multi_free_input_info#:#A User can hand in multiple Texts
 qtype_2_send#:#Send
 qtype_2_text#:#Text
 qtype_2_your_input#:#Your saved input:
-qtype_4_clear#:#Clear
+qtype_4_clear#:#Discard
 qtype_4_correct#:#Correct
 qtype_4_correct_solution#:#Correct order:
 qtype_4_display_correct_order#:#Korrekte Reihenfolge anzeigen
@@ -126,10 +141,10 @@ qtype_4_options#:#Options
 qtype_4_option_correct_position#:#Correct Position
 qtype_4_option_position#:#Position
 qtype_4_option_text#:#Term
-qtype_4_save#:#Save
+qtype_4_save#:#Send
 qtype_4_wrong#:#Wrong
 qtype_4_your_order#:#Your Submission:
-qtype_5_correct_solution#:#MISSING
+qtype_5_correct_solution#:#Correct Solution
 qtype_5_display_correct_order#:#Sort
 qtype_5_hide_correct_order#:#Revert Sorting
 qtype_5_options#:#Options
@@ -137,6 +152,27 @@ qtype_5_option_text#:#Text
 qtype_5_option_weight#:#Weight
 qtype_form_header#:#Answers
 qtype_multi_free_input#:#Multiple Inputs
+qtype_6_range_start#:#Minimum
+qtype_6_voter_start_button_vote#:#Send
+qtype_6_voter_clear#:#Discard
+qtype_6_voter_start_button_unvote#:#Discard
+qtype_6_invalid_end_range#:#The end of the range must be greater than the start. Please note that the end range must be between %1$s and %2$s.
+qtype_6_invalid_start_range#:#The start of the range must be less than the end. Please note that the start range must be between %1$s and %2$s.
+qtype_6_range_end#:#Maximum
+qtype_6_option_percentage#:#Percentages
+qtype_6_option_range_start#:#Minimum
+qtype_6_option_range_end#:#Maximum
+qtype_6_option_percentage_info#:#Shows the number range with a percentage sign. There are no calculations done, this is only an visual option.
+qtype_6_option_range_start_info#:#The start of the number range.
+qtype_6_option_range_end_info#:#The end of the number range.
+qtype_4_option_randomise_option_after_save#:#Shuffle answers
+qtype_4_option_randomise_option_after_save_inf#:#MISSING qtype_4_option_randomise_option_after_save_inf
+qtype_6_option_alternative_result_display_mode#:#Display-Mode
+qtype_6_option_alternative_result_display_mode_info#:#Alternative mode which displays the result as text grouped together. The answers are sorted descending by quantity.
+qtype_4_option_randomise_option_after_save_info#:#During presentation, the options appear in a random order.
+qtype_6_display_mode_nr_0#:#Effective estimates (in ascending order)
+qtype_6_display_mode_nr_2#:#Effective estimates inc. mean, median and mode
+qtype_6_display_mode_nr_1#:#Bar graph
 results_title#:#Results
 rminable_select_start_time#:#Start
 root_create_xlvo#:#Create LiveVoting
@@ -212,6 +248,9 @@ voting_type_5#:#Priorities
 voting_type_5_info#:#Terms can be sorted after Priorities
 voting_update#:#Update and return
 voting_update_and_stay#:#Update
+voting_type_6#:#Number Range
+voting_type_6_info#:#Users can guess a number between X and Y.
+voting_powerpoint_export#:#Export as PowerPoint
 vqtype_1_options#:#Options
 xlvo_add#:#Add
 xlvo_delete#:#Delete LiveVoting
@@ -221,3 +260,45 @@ xlvo_new#:#Add new LiveVoting
 xlvo_read#:#Read (used only in non-anonymous-mode)
 xlvo_visible#:#LiveVotings visible
 xlvo_write#:#Present and edit LiveVoting
+qtype_1_total_obj_results_alway_on_info#:#MISSING qtype_1_total_obj_results_alway_on_info
+obj_frozen_alway_ofxlvo_edit#:#MISSING obj_frozen_alway_ofxlvo_edit
+playplayer_msg_no_start_2#:#MISSING playplayer_msg_no_start_2
+voting_short_link#:#Short URL
+voting_permanent_link#:#Permanent-Link
+config_ppt_export_info_manual#:#Embedding LiveVotings in PowerPoint:
+config_ppt_export_info_manual_1#:#Export LiveVoting
+config_ppt_export_info_manual_2#:#Start PowerPoint
+config_ppt_export_info_manual_3#:#Search for "Web Viewer" in the Office AddIn's Store (Insert > AddIns > My AddIns)
+config_ppt_export_info_manual_4#:#Add Web-Viewer AddIn
+config_allow_shortlink_presenter#:#Activate Short URL for Presenter
+config_allow_shortlink_presenter_info#:#For example, a short URL can be created by adding a RewriteRule in the .htaccess, which will trigger on https://ilias.domain.com/presenter:
+config_allow_shortlink_link_presenter#:#Short URL
+config_allow_shortlink_link_presenter_info#:#Full Short URL of your Installation , e.g. https://ilias.domain.com/presenter
+rbac_create_xlvo#:#Create LiveVoting
+player_pin#:#PIN: %s
+qtype_6_option_range_step#:#Step
+qtype_6_option_range_step_info#:#The step of the number range.
+config_use_serif_font_for_pins#:#Use serif font for PIN's
+config_use_serif_font_for_pins_info#:#Use serif font for PIN's
+qtype_6_invalid_step_range#:#The step could not be saved. This must be smaller than the number range between minimum and maximum. The number range between minimum and maximum must be divisible by the step.
+qtype_2_answer_field#:#Answer field
+qtype_2_answer_field_info#:#MISSING qtype_2_answer_field_info
+qtype_2_answer_field_single_line#:#Single-line answer field
+qtype_2_answer_field_single_line_info#:#Single-line answer field
+qtype_2_answer_field_multi_line#:#Multi-line answer field
+qtype_2_answer_field_multi_line_info#:#Multi-line answer field
+start_online#:#%s online
+start_zoom#:#Zoom
+qtype_1_optmsg_success_voting_updated#:#MISSING qtype_1_optmsg_success_voting_updated
+qtype_6_mean#:#Mean
+qtype_6_median#:#Median
+qtype_6_mode#:#Mode
+qtype_6_mode_not_applicable#:#not applicable
+removeplugindataconfirm_cancel#:#Cancel
+removeplugindataconfirm_confirm_remove_data#:#Do you want to remove the %1$s data as well? At most, you just want to disable the %1$s plugin?
+removeplugindataconfirm_deactivate#:#Just deactivate %1$s plugin
+removeplugindataconfirm_data#:#%1$s data
+removeplugindataconfirm_keep_data#:#Keep %1$s data
+removeplugindataconfirm_msg_kept_data#:#The %1$s data was kept
+removeplugindataconfirm_msg_removed_data#:#The %1$s data was also removed
+removeplugindataconfirm_remove_data#:#Remove %1$s data

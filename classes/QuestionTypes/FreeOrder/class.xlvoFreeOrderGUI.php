@@ -1,6 +1,10 @@
 <?php
 
+require_once __DIR__ . '/../../../vendor/autoload.php';
+
 use LiveVoting\Js\xlvoJs;
+use LiveVoting\QuestionTypes\xlvoQuestionTypes;
+use srag\CustomInputGUIs\LiveVoting\GlyphGUI\GlyphGUI;
 
 /**
  * Class xlvoFreeOrderGUI
@@ -11,8 +15,36 @@ use LiveVoting\Js\xlvoJs;
  */
 class xlvoFreeOrderGUI extends xlvoCorrectOrderGUI {
 
-	public function initJS() {
-		xlvoJs::getInstance()->api($this)->name('FreeOrder')->category('QuestionTypes')->addLibToHeader('jquery.ui.touch-punch.min.js')->init();
+	/**
+	 * xlvoFreeOrderGUI constructor.
+	 */
+	public function __construct() {
+		parent::__construct();
+	}
+
+
+	/**
+	 * @return bool
+	 */
+	protected function isRandomizeOptions() {
+		return false;
+	}
+
+
+	/**
+	 * @return string
+	 */
+	public function getMobileHTML() {
+		return $this->getFormContent() . xlvoJs::getInstance()->name(xlvoQuestionTypes::FREE_ORDER)->category('QuestionTypes')->getRunCode();
+	}
+
+
+	/**
+	 * @param bool $current
+	 */
+	public function initJS($current = false) {
+		xlvoJs::getInstance()->api($this)->name(xlvoQuestionTypes::FREE_ORDER)->category('QuestionTypes')
+			->addLibToHeader('jquery.ui.touch-punch.min.js')->init();
 	}
 
 
@@ -24,20 +56,20 @@ class xlvoFreeOrderGUI extends xlvoCorrectOrderGUI {
 			return array();
 		}
 		$states = $this->getButtonsStates();
-		$b = \ilLinkButton::getInstance();
+		$b = ilLinkButton::getInstance();
 		$b->setId(self::BUTTON_TOTTLE_DISPLAY_CORRECT_ORDER);
 		if ($states[self::BUTTON_TOTTLE_DISPLAY_CORRECT_ORDER]) {
-			$b->setCaption(xlvoGlyphGUI::get('align-left'), false);
+			$b->setCaption(GlyphGUI::get('align-left'), false);
 		} else {
-			$b->setCaption(xlvoGlyphGUI::get('sort-by-attributes-alt'), false);
+			$b->setCaption(GlyphGUI::get('sort-by-attributes-alt'), false);
 		}
 
 		//		$t = ilLinkButton::getInstance();
 		//		$t->setId(self::BUTTON_TOGGLE_PERCENTAGE);
 		//		if ($states[self::BUTTON_TOGGLE_PERCENTAGE]) {
-		//			$t->setCaption('%', false);
+		//			$t->setCaption(' %', false);
 		//		} else {
-		//			$t->setCaption(xlvoGlyphGUI::get('user'), false);
+		//			$t->setCaption(GlyphGUI::get('user'), false);
 		//		}
 
 		return array( $b );

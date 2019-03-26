@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7fc1b7e99fd13002916382bef781b48d",
+    "content-hash": "1fbb62462aef9e9b1bf8d00a00c638e7",
     "packages": [
         {
             "name": "endroid/qrcode",
-            "version": "1.9.1",
+            "version": "1.9.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/endroid/QrCode.git",
-                "reference": "ab09b42778ad67cfe850f9c23165f8d08b756680"
+                "url": "https://github.com/endroid/qr-code.git",
+                "reference": "c9644bec2a9cc9318e98d1437de3c628dcd1ef93"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/endroid/QrCode/zipball/ab09b42778ad67cfe850f9c23165f8d08b756680",
-                "reference": "ab09b42778ad67cfe850f9c23165f8d08b756680",
+                "url": "https://api.github.com/repos/endroid/qr-code/zipball/c9644bec2a9cc9318e98d1437de3c628dcd1ef93",
+                "reference": "c9644bec2a9cc9318e98d1437de3c628dcd1ef93",
                 "shasum": ""
             },
             "require": {
@@ -64,29 +64,258 @@
                 "qrcode",
                 "symfony"
             ],
-            "time": "2017-01-03T11:02:14+00:00"
+            "abandoned": "endroid/qr-code",
+            "time": "2017-04-08T09:13:59+00:00"
         },
         {
-            "name": "symfony/options-resolver",
-            "version": "v3.2.1",
+            "name": "srag/activerecordconfig",
+            "version": "v0.14.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/options-resolver.git",
-                "reference": "45940bcad6388b3b6058107eca67ced738d205bb"
+                "url": "https://github.com/studer-raimann/ActiveRecordConfig.git",
+                "reference": "5a7bc1504982a4cad597bbb50f0c38d4e174c987"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/45940bcad6388b3b6058107eca67ced738d205bb",
-                "reference": "45940bcad6388b3b6058107eca67ced738d205bb",
+                "url": "https://api.github.com/repos/studer-raimann/ActiveRecordConfig/zipball/5a7bc1504982a4cad597bbb50f0c38d4e174c987",
+                "reference": "5a7bc1504982a4cad597bbb50f0c38d4e174c987",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.9"
+                "php": ">=5.6",
+                "srag/custominputguis": ">=0.1.0",
+                "srag/dic": ">=0.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "srag\\ActiveRecordConfig\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "studer + raimann ag - Team Custom 1",
+                    "email": "support-custom1@studer-raimann.ch",
+                    "homepage": "https://studer-raimann.ch",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Simple ActiveRecord config for ILIAS plugins",
+            "homepage": "https://github.com/studer-raimann/ActiveRecordConfig",
+            "keywords": [
+                "ILIAS",
+                "activerecord",
+                "config"
+            ],
+            "time": "2019-01-22T09:09:53+00:00"
+        },
+        {
+            "name": "srag/custominputguis",
+            "version": "v0.17.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/studer-raimann/CustomInputGUIs.git",
+                "reference": "c17f5f688a9e2d84a035c12b02a8aef2ed931777"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/studer-raimann/CustomInputGUIs/zipball/c17f5f688a9e2d84a035c12b02a8aef2ed931777",
+                "reference": "c17f5f688a9e2d84a035c12b02a8aef2ed931777",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6",
+                "srag/dic": ">=0.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "srag\\CustomInputGUIs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "studer + raimann ag - Team Custom 1",
+                    "email": "support-custom1@studer-raimann.ch",
+                    "homepage": "https://studer-raimann.ch",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Custom Input-GUI's",
+            "homepage": "https://github.com/studer-raimann/CustomInputGUIs",
+            "keywords": [
+                "ILIAS",
+                "PropertyForm",
+                "gui",
+                "input",
+                "table"
+            ],
+            "time": "2019-02-04T14:57:44+00:00"
+        },
+        {
+            "name": "srag/dic",
+            "version": "v0.14.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/studer-raimann/DIC.git",
+                "reference": "e824df3032bfc201d68d29b1a2cc2c251d4e4b92"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/studer-raimann/DIC/zipball/e824df3032bfc201d68d29b1a2cc2c251d4e4b92",
+                "reference": "e824df3032bfc201d68d29b1a2cc2c251d4e4b92",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "srag\\DIC\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "studer + raimann ag - Team Custom 1",
+                    "email": "support-custom1@studer-raimann.ch",
+                    "homepage": "https://studer-raimann.ch",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Use all ILIAS globals in your class",
+            "homepage": "https://github.com/studer-raimann/DIC",
+            "keywords": [
+                "ILIAS",
+                "dic",
+                "globals",
+                "trait"
+            ],
+            "time": "2019-01-28T11:49:30+00:00"
+        },
+        {
+            "name": "srag/librariesnamespacechanger",
+            "version": "v0.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/studer-raimann/LibrariesNamespaceChanger.git",
+                "reference": "64a1728ed926f14d6d17b70caf4ebcc3d86df717"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/studer-raimann/LibrariesNamespaceChanger/zipball/64a1728ed926f14d6d17b70caf4ebcc3d86df717",
+                "reference": "64a1728ed926f14d6d17b70caf4ebcc3d86df717",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "srag\\LibrariesNamespaceChanger\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "studer + raimann ag - Team Custom 1",
+                    "email": "support-custom1@studer-raimann.ch",
+                    "homepage": "https://studer-raimann.ch",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Change namespace of libraries to plugin namespace",
+            "homepage": "https://github.com/studer-raimann/LibrariesNamespaceChanger",
+            "keywords": [
+                "ILIAS",
+                "libraries"
+            ],
+            "time": "2019-01-22T09:19:11+00:00"
+        },
+        {
+            "name": "srag/removeplugindataconfirm",
+            "version": "v0.3.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/studer-raimann/RemovePluginDataConfirm.git",
+                "reference": "c9bab84437a3029ca919da727d7f315c6de3c675"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/studer-raimann/RemovePluginDataConfirm/zipball/c9bab84437a3029ca919da727d7f315c6de3c675",
+                "reference": "c9bab84437a3029ca919da727d7f315c6de3c675",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6",
+                "srag/dic": ">=0.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "srag\\RemovePluginDataConfirm\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "studer + raimann ag - Team Custom 1",
+                    "email": "support-custom1@studer-raimann.ch",
+                    "homepage": "https://studer-raimann.ch",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Demand if plugin data should be removed on uninstall",
+            "homepage": "https://github.com/studer-raimann/RemovePluginDataConfirm",
+            "keywords": [
+                "ILIAS",
+                "confirm",
+                "data",
+                "plugin",
+                "uninstall"
+            ],
+            "time": "2019-01-22T09:18:04+00:00"
+        },
+        {
+            "name": "symfony/options-resolver",
+            "version": "v3.4.22",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/options-resolver.git",
+                "reference": "0f1cbaee6b356e72c0e025f9a4e9d76a25bf4793"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/0f1cbaee6b356e72c0e025f9a4e9d76a25bf4793",
+                "reference": "0f1cbaee6b356e72c0e025f9a4e9d76a25bf4793",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5.9|>=7.0.8"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.2-dev"
+                    "dev-master": "3.4-dev"
                 }
             },
             "autoload": {
@@ -118,17 +347,17 @@
                 "configuration",
                 "options"
             ],
-            "time": "2016-05-13T18:13:23+00:00"
+            "time": "2019-01-16T09:39:14+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "beta",
+    "minimum-stability": "stable",
     "stability-flags": [],
-    "prefer-stable": true,
+    "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^5.5.9 || ^7.0"
+        "php": ">=5.5"
     },
     "platform-dev": []
 }

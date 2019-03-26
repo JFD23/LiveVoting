@@ -1,10 +1,10 @@
 #xlvo-display-player {
   background-color: #F9F9F9;
-  position: relative;
+  position:         relative;
 
   .xlvo-display-player-content {
-    position: absolute;
-    width: 100%;
+	position: absolute;
+	width:    100%;
   }
 }
 
@@ -110,7 +110,7 @@
   width:            100% !important;
   height:           100% !important;
   z-index:          5000 !important;
-  background-color: black !important;
+  background-color: #F0F0F0 !important; // ILIAS core background
   //zoom:             2 !important;
   //-moz-transform:   scale(2) !important;
   //transform:        scale(2, 2);
@@ -137,4 +137,13 @@
   //  opacity:        1;
   //}
   //}
+}
+
+/* Cursor pointer for QR code button */
+.panel-title > .label[data-toggle] {
+  cursor: pointer;
+}
+
+.well {
+  font-size: 24px;
 }
