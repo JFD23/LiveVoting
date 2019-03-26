@@ -44,6 +44,7 @@ div.xlvo_shortlink {
   text-align: center;
   vertical-align: middle;
 }
+div.xlvo_shortlink {word-break: break-all;}
 div.xlvo_pin * {
   margin: 0;
 }
