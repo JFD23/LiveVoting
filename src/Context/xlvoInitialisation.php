@@ -23,7 +23,6 @@ use srag\DIC\LiveVoting\DICTrait;
  * Initializes a ILIAS environment depending on Context (PIN or ILIAS).
  * This is used in every entry-point for users and AJAX requests
  *
- * TODO: Refactoring Realy need so mutch ILIAS core code?
  */
 class xlvoInitialisation extends ilInitialisation {
 
@@ -184,6 +183,9 @@ class xlvoInitialisation extends ilInitialisation {
 		}
 		if ($DIC->offsetExists("ilHelp")) {
 			$DIC->offsetUnset("ilHelp");
+		}
+		if ($DIC->offsetExists("styleDefinition")) {
+			$DIC->offsetUnset("styleDefinition");
 		}
 		parent::initHTML();
 		if (self::USE_OWN_GLOBAL_TPL) {

@@ -1,5 +1,21 @@
 # Change Log
 
+## [4.3.0]
+- feature: clustering/categorizing of free text questions 
+
+## [4.2.0]
+- ILIAS 5.4 support
+- Remove ILIAS 5.2 support
+
+## [4.1.3] - 2019-04-24
+- fixed bug "Zahlen-schätzen Frage Range" PLLV-307
+- fixed bug "Exceptions leiten aur error.php um, geben aber keine Fehlermeldung aus." PLLV-293
+
+## [4.1.2] - 2019-03-26
+- fixed bug "Fehler beim Zugriff auf Offline-LV" PLLV-315
+- fixed bug "Powerpoint Export verhindern, wenn keine Frage vorhanden ist" PLLV-306
+- Powerpoint Export hints adapted
+
 ## [4.1.1] - 2019-03-25
 - fixed bug direct links for non public LiveVotings - PLLV-314
 - fixed bug short links PLLV-313
